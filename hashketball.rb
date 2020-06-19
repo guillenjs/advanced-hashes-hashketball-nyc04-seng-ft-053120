@@ -256,7 +256,6 @@ def big_shoe_rebounds
                 shoe_size = deep_k[:shoe]
                 result = deep_k[:rebounds]
               end
-               
             end
           end
         end
