@@ -254,6 +254,7 @@ def big_shoe_rebounds
             deep_k.each do|llave, valor|
               while deep_k[:shoe] > shoe_size
                 shoe_size = deep_k[:shoe]
+                result = deep_k[:rebounds]
               end
                r
             end
