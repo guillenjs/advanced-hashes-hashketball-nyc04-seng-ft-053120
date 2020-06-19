@@ -1,4 +1,6 @@
 # Write your code below game_hash
+require 'pry'
+
 def game_hash
   {
     home: {
@@ -126,4 +128,139 @@ def game_hash
   }
 end
 
+
 # Write code here
+
+def num_points_scored(hash)
+
+nba = game_hash
+player_array = []
+  nba.each do |key, value|
+    value.each do |inner_key, index|
+      if index.is_a?(Array)
+      index.each do |deep_key, deep_value|
+          if deep_key.is_a?(Hash)
+            deep_key.each do |k, v|
+              if hash == v
+                player_array << deep_key
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+player_array[0][:points]
+end
+
+def shoe_size(name)
+  nba = game_hash
+  player_array = []
+    nba.each do |key, value|
+      value.each do |inner_key, index|
+        if index.is_a?(Array)
+        index.each do |deep_key, deep_value|
+            if deep_key.is_a?(Hash)
+              deep_key.each do |k, v|
+                if name == v
+                  player_array << deep_key
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  player_array[0][:shoe]
+end
+
+def team_colors(team)
+  game_hash
+  stats = []
+    game_hash.each do|key, value|
+      value.each do|k, v|
+        if team == v
+          stats << value
+        end
+      end
+    end
+    stats[0][:colors]
+end
+
+def team_names
+game_hash
+total = []
+  game_hash.each do |key, value|
+    value.find(:team_names) do |k, v|
+       total << v
+    end
+  end
+total
+end
+
+def player_numbers(team)
+  game_hash
+  stats = []
+  game_hash.find do|key, value|
+    if value[:team_name] == team
+      value.each do|k, v|
+          if v.is_a?(Array)
+          v.each do |deep_k, deep_v|
+            if deep_k.is_a?(Hash)
+              deep_k.each do |llave, n|
+                if deep_k[:number] == deep_k[llave]
+                  stats << deep_k[llave]
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+stats
+end
+
+def player_stats(player)
+game_hash
+stats = []
+  game_hash.each do |key, value|
+    value.each do |k, v|
+      if v.is_a?(Array)
+        v.each do |deep_k|
+          if deep_k.is_a?(Hash)
+            deep_k.each do |llave, valor|
+              if deep_k[:player_name] == player
+                stats << deep_k
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+stats[0]
+end
+
+def big_shoe_rebounds
+  game_hash
+  shoe_size = 0
+  result = 0
+  game_hash.each do |key, value|
+    value.each do |k, v|
+      if v.is_a?(Array)
+        v.each do |deep_k, deep_v|
+          if deep_k.is_a?(Hash)
+            deep_k.each do|llave, valor|
+              while deep_k[:shoe] > shoe_size
+                shoe_size = deep_k[:shoe]
+                result = deep_k[:rebounds]
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+result
+end
