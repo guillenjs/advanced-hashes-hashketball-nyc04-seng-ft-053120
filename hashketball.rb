@@ -255,7 +255,7 @@ def big_shoe_rebounds
               while deep_k[:shoe] > shoe_size
                 shoe_size = deep_k[:shoe]
               end
-               result = deep_k[:rebounds]
+               r
             end
           end
         end
